@@ -1,0 +1,3 @@
+SRC rpn_calculator
+PKG core thread
+B _build/rpn_calculator

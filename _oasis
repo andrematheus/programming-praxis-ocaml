@@ -1,0 +1,27 @@
+Name: programming-praxis
+Version: 0.1
+Synopsis: Solutions for problems from www.programmingpraxis.com
+Authors: André Roque Matheus <amatheus@mac.com>
+License: MIT
+
+Description: This project is my attempt at solving the problems at
+  www.programmingpraxis.com and learn Ocaml in the process.
+  Here I use Ocaml with the Jane Street Core libraries.
+
+OASISFormat: 0.4
+BuildTools: ocamlbuild
+Plugins: META (0.4), DevFiles (0.4)
+
+# https://programmingpraxis.com/2009/02/19/rpn-calculator/
+
+Executable "rpn_calculator"
+  Path: rpn_calculator
+  MainIs: rpn_calculator.ml
+  CompiledObject: best
+  BuildDepends: core, threads
+
+Test "test_rpn_calculator"
+  TestTools: rpn_calculator
+  Run$: flag(tests)
+  Command: ./test $rpn_calculator
+  WorkingDirectory: test/rpn_calculator

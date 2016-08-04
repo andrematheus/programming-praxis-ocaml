@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# Copyright (c) 2016 André Roque Matheus - All Rights Reserved
+# Licensed under MIT License, see LICENSE.md
+
+set -e
+BIN=$1
+$BIN < rpn_calculator.in > rpn_calculator.out
+diff rpn_calculator.out rpn_calculator.expected
