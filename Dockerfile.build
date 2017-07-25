@@ -6,6 +6,8 @@ RUN apt-get update; apt-get -y upgrade
 
 RUN apt-get -y install build-essential
 
-RUN apt-get -y install ocaml opam
+RUN apt-get -y install ocaml opam m4
+
+RUN opam init
 
 RUN opam install -y oasis core
