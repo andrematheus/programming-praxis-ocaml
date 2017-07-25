@@ -2,7 +2,7 @@
    Copyright (c) 2016 André Roque Matheus - All Rights Reserved
    Licensed under MIT License, see LICENSE.md
 *)
-open Core.Std
+open Core
 
 module type RpnValue = sig
   type t
@@ -57,9 +57,10 @@ module RpnCalculator(V: RpnValue) : RPN_CALCULATOR with type t = V.t = struct
     match In_channel.input_line In_channel.stdin with
     | Some l -> let result = evaluate l s in
       V.print (List.hd_exn result);
+      Out_channel.flush Out_channel.stdout;
       print_endline "";
       evaluate_stdin result
-    | None -> V.print (List.hd_exn s); flush Out_channel.stdout
+    | None -> Out_channel.flush Out_channel.stdout
 end
 
 module FloatCalculator = RpnCalculator(struct

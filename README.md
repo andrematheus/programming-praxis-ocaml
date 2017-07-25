@@ -3,6 +3,11 @@
 This project is my attempt at solving Programming Praxis problems
 using Ocaml.
 
+## Ocaml Dependencies
+
+- oasis
+- core
+
 ### Running
 
 To compile all problems:
