@@ -9,5 +9,5 @@ pipelines:
   default:
     - step:
         script:
-          - ./configure
+          - ocaml setup.ml -configure --enable-tests
           - make test
