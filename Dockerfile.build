@@ -1,0 +1,11 @@
+FROM ubuntu
+
+MAINTAINER André Roque Matheus <amatheus@mac.com>
+
+RUN apt-get update; apt-get -y upgrade
+
+RUN apt-get -y install build-essential
+
+RUN apt-get -y install ocaml opam
+
+RUN opam install -y oasis core
