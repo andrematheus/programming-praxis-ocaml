@@ -8,6 +8,27 @@ RUN apt-get -y install build-essential
 
 RUN apt-get -y install ocaml opam m4
 
-RUN opam init
+RUN apt-get -y install sudo
+
+RUN useradd -d /home/ocaml -m -s /bin/bash ocaml -G sudo 
+
+RUN passwd -l ocaml
+
+ADD docker/ocamlsudo /etc/sudoers.d/ocaml
+RUN chmod 440 /etc/sudoers.d/ocaml
+RUN chown root:root /etc/sudoers.d/ocaml
+RUN chown -R ocaml:ocaml /home/ocaml
+
+USER ocaml
+
+ENV HOME /home/ocaml
+
+WORKDIR /home/ocaml
+
+RUN opam init 
+
+RUN opam switch 4.05.0
 
 RUN opam install -y oasis core
+
+RUN echo "eval \`opam config env\`" >> /home/ocaml/.bashrc
